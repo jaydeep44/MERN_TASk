@@ -17,15 +17,15 @@ const AddReview = ({ companyId, onClose, renderParent }) => {
 
   const onSubmit = async (data) => {
     try {
-      const response = axios.post(`${API_URL}/reviews/ceate_review`, {
+      const response = await axios.post(`${API_URL}/reviews/ceate_review`, {
         fullName: data.fullName,
         rating: data.rating,
         reviewText: data.review,
         subject: data.subject,
         companyId: companyId,
       });
-      toast.success("Add review success");
       renderParent();
+      toast.success("Add review success");
       reset();
       onClose();
     } catch (error) {
